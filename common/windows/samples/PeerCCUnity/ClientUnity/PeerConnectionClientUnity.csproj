@@ -885,4 +885,10 @@
   <PropertyGroup>
     <Win32Resource>Resource.res</Win32Resource>
   </PropertyGroup>
+  <PropertyGroup>
+    <PostBuildEvent>xcopy "$(ProjectDir)..\..\..\..\..\webrtc\windows\solutions\Build\Output\Org.WebRtc\$(ConfigurationName)\$(PlatformName)\Org.WebRtc.dll" "$(ProjectDir)Unity\PeerCCUnity\Assets\Plugins\WSA\x86"
+xcopy "$(ProjectDir)..\..\..\..\..\webrtc\windows\solutions\Build\Output\Org.WebRtc\$(ConfigurationName)\$(PlatformName)\Org.WebRtc.winmd" "$(ProjectDir)Unity\PeerCCUnity\Assets\Plugins\WSA\x86"
+xcopy "$(ProjectDir)..\..\..\..\..\webrtc\windows\solutions\Build\Output\Org.WebRtc\$(ConfigurationName)\$(PlatformName)\Org.WebRtc.pdb" "$(ProjectDir)Unity\PeerCCUnity\Assets\Plugins\WSA\x86"
+</PostBuildEvent>
+  </PropertyGroup>
 </Project>
