@@ -4,7 +4,7 @@
   <PropertyGroup>
     <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
     <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
-    <ProjectGuid>{217FAA3A-8FC1-4663-BA00-2F842B3FF4E1}</ProjectGuid>
+    <ProjectGuid>{77F09E16-DC5B-4CB2-B179-653E26FA2FAA}</ProjectGuid>
     <OutputType>Library</OutputType>
     <AppDesignerFolder>Properties</AppDesignerFolder>
     <RootNamespace>PeerConnectionClientCore</RootNamespace>

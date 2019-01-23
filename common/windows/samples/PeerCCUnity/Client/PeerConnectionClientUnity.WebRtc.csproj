@@ -5,7 +5,7 @@
   <PropertyGroup>
     <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
     <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
-    <ProjectGuid>{A2EA7350-EE59-42C5-9323-C942B058B217}</ProjectGuid>
+    <ProjectGuid>{AF721A83-A1D1-4C81-98D0-5EE3B48883FA}</ProjectGuid>
     <OutputType>AppContainerExe</OutputType>
     <AppDesignerFolder>Properties</AppDesignerFolder>
     <RootNamespace>PeerConnectionClientUnity</RootNamespace>
@@ -359,10 +359,6 @@
     <UnprocessedFileCommon Include="$(ProjectDir)..\Unity\Unprocessed\*" />
   </ItemGroup>
   <ItemGroup>
-    <ProjectReference Include="..\ClientCore\PeerConnectionClientUntyXamlCore.csproj">
-      <Project>{217faa3a-8fc1-4663-ba00-2f842b3ff4e1}</Project>
-      <Name>PeerConnectionClientUntyXamlCore</Name>
-    </ProjectReference>
     <ProjectReference Include="..\MediaEnginePlayerPlugin\WebRtcScheme\WebRtcScheme.vcxproj">
       <Project>{b02463bf-335c-4d04-a8cd-975a875223ee}</Project>
       <Name>WebRtcScheme</Name>

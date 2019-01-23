@@ -358,12 +358,6 @@
       <Link>Scripts\WorldCursor.cs</Link>
     </Compile>
   </ItemGroup>
-  <ItemGroup>
-    <ProjectReference Include="..\..\..\ClientCore\PeerConnectionClientUnityD3DCore.csproj">
-      <Project>{217faa3a-8fc1-4663-ba00-2f842b3ff4e1}</Project>
-      <Name>PeerConnectionClientUnityD3DCore</Name>
-    </ProjectReference>
-  </ItemGroup>
   <PropertyGroup Condition=" '$(VisualStudioVersion)' == '' or '$(VisualStudioVersion)' &lt; '14.0' ">
     <VisualStudioVersion>14.0</VisualStudioVersion>
   </PropertyGroup>

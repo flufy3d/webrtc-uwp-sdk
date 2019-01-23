@@ -166,12 +166,6 @@
       <SubType>Designer</SubType>
     </Page>
   </ItemGroup>
-  <ItemGroup>
-    <ProjectReference Include="..\ClientCore\PeerConnectionClientCore.csproj">
-      <Project>{217faa3a-8fc1-4663-ba00-2f842b3ff4e1}</Project>
-      <Name>PeerConnectionClientCore</Name>
-    </ProjectReference>
-  </ItemGroup>
   <PropertyGroup Condition=" '$(VisualStudioVersion)' == '' or '$(VisualStudioVersion)' &lt; '14.0' ">
     <VisualStudioVersion>14.0</VisualStudioVersion>
   </PropertyGroup>
