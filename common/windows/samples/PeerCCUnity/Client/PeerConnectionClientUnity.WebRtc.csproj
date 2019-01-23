@@ -359,6 +359,10 @@
     <UnprocessedFileCommon Include="$(ProjectDir)..\Unity\Unprocessed\*" />
   </ItemGroup>
   <ItemGroup>
+    <ProjectReference Include="..\ClientCore\PeerConnectionClientUnityD3DCore.csproj">
+      <Project>{77f09e16-dc5b-4cb2-b179-653e26fa2faa}</Project>
+      <Name>PeerConnectionClientUnityD3DCore</Name>
+    </ProjectReference>
     <ProjectReference Include="..\MediaEnginePlayerPlugin\WebRtcScheme\WebRtcScheme.vcxproj">
       <Project>{b02463bf-335c-4d04-a8cd-975a875223ee}</Project>
       <Name>WebRtcScheme</Name>

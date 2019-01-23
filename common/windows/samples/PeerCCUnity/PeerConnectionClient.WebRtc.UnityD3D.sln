@@ -54,6 +54,9 @@ EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Assembly-CSharp", "ClientUnity\Unity\Assembly-CSharp\Assembly-CSharp.csproj", "{661EFDE0-ED45-41A2-8E83-D8C6473D8988}"
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "PeerConnectionClientUnity.WebRtc", "Client\PeerConnectionClientUnity.WebRtc.csproj", "{AF721A83-A1D1-4C81-98D0-5EE3B48883FA}"
+	ProjectSection(ProjectDependencies) = postProject
+		{77F09E16-DC5B-4CB2-B179-653E26FA2FAA} = {77F09E16-DC5B-4CB2-B179-653E26FA2FAA}
+	EndProjectSection
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "PeerConnectionClientUnityD3DCore", "ClientCore\PeerConnectionClientUnityD3DCore.csproj", "{77F09E16-DC5B-4CB2-B179-653E26FA2FAA}"
 EndProject
