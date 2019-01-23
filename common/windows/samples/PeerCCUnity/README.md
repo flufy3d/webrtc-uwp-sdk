@@ -20,7 +20,6 @@ f1 with Windows Store .NET Scripting Backend
 
 ### Compile and run
 
-* For XAML based application with Unity rendering component open webrtc\windows\solutions\WebRtcUnityXaml.sln and build PeerConnectionClientUnity.WebRtc
 * Unity 3D Peer Connection Client application - build PeerConnectionClientUnity project in webrtc\windows\solutions\PeerConnectionClient.WebRtc.UnityD3D.sln
 
 ### Exporting Visual Studio solution from Unity Editor - PeerCC Unity standalone application only
