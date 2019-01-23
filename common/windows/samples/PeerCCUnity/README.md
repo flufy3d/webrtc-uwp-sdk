@@ -5,27 +5,28 @@ This repo contains the PeerConnection sample WebRTC sample for establishing an a
 
 - [PeerConnectionClient.WebRtc.sln](../PeerConnectionClient.WebRtc.sln) **UWP PeerConnection XAML/C# Sample**
 <br>Start here for non-MR/HoloLens development.
-- [WebRtcUnityD3D.sln](../PeerConnectionClient.WebRtc.UnityD3D.sln) **Unity standalone PeerConnection Sample**
+- [PeerConnectionClient.WebRtc.UnityD3D.sln](../PeerConnectionClient.WebRtc.UnityD3D.sln) **Unity standalone PeerConnection Sample**
 <br>Standalone Unity sample with full screen 3D rendering.  Most commonly used sample for Unity HoloLens projects.  Read Mike Taulty's [blog post](https://mtaulty.com/2018/03/15/rough-notes-on-uwp-and-webrtc-part-4-adding-some-unity-and-a-little-hololens/) for more detail on the solution.
-- [WebRtcUnityXaml.sln](../PeerConnectionClient.WebRtc.UnityXaml.sln) **UWP PeerConnection XAML/C# with video rendered in Unity**
-<br>Peer Connection Client UWP/XAML application with video rendered in a Unity scene via [SwapChainPanel](https://docs.microsoft.com/en-us/uwp/api/Windows.UI.Xaml.Controls.SwapChainPanel).  Useful if you want to render all content in a UWP window and use XAML to build most of the UI, but include some 3D content in the app.
+
+
 >**Known issue:** Mixed-Reality Capture is not currently working in this sample.
 
 ## Build requirements
 
-1. Unity version 2017.4.0f1 with Windows Store .NET Scripting Backend
->**Note:** If Unty is not installed on default location (C:\Program Files\Unity), edit install path values in property files common\windows\samples\PeerCC\Client\UnityCommon.props and common\windows\samples\PeerCC\ClientUnity\UnityCommon.props.*
+1. Unity version 2017.4.8
+f1 with Windows Store .NET Scripting Backend
+>**Note:** If Unty is not installed on default location (C:\Program Files\Unity), edit install path values in property files common\windows\samples\PeerCC\ClientUnity\UnityCommon.props.*
 2. Visual Studio 2017 with SDK 17134
 
 ### Compile and run
 
 * For XAML based application with Unity rendering component open webrtc\windows\solutions\WebRtcUnityXaml.sln and build PeerConnectionClientUnity.WebRtc
-* Unity 3D Peer Connection Client application - build PeerConnectionClientUnity project in webrtc\windows\solutions\WebRtcUnityD3D.sln
+* Unity 3D Peer Connection Client application - build PeerConnectionClientUnity project in webrtc\windows\solutions\PeerConnectionClient.WebRtc.UnityD3D.sln
 
 ### Exporting Visual Studio solution from Unity Editor - PeerCC Unity standalone application only
 
-1. Build soulution WebRtcUnityD3D.sln - this step adds WebRTC binaries to Unity project space
-2. Open Unity project common\windows\samples\PeerCC\ClientUnity\Unity\PeerCCUnity in Unity Editor
+1. Build soulution PeerConnectionClient.WebRtc.UnityD3D.sln - this step adds WebRTC binaries to Unity project space
+2. Open Unity project common\windows\samples\PeerCCUnity\ClientUnity\Unity\PeerCCUnity in Unity Editor
 3. Go to 'File' -> 'Build settings...' -> 'Build' and choose an export folder
 4. Add the following XML block to PeerCCUnity\Package.appxmanifest:
 ```
