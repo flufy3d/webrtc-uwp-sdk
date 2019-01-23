@@ -18,7 +18,7 @@
     <EnableDotNetNativeCompatibleProfile>true</EnableDotNetNativeCompatibleProfile>
     <FileAlignment>512</FileAlignment>
     <ProjectTypeGuids>{A5A43C5B-DE2A-4C0C-9213-0A381AF9435A};{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}</ProjectTypeGuids>
-    <PackageCertificateKeyFile>WSATestCertificate.pfx</PackageCertificateKeyFile>
+    <PackageCertificateKeyFile>PeerConnectionClientUnity_TemporaryKey.pfx</PackageCertificateKeyFile>
     <AppxPackageSigningEnabled>true</AppxPackageSigningEnabled>
     <PlatformShortName>$(Platform)</PlatformShortName>
     <AllowedReferenceRelatedFileExtensions>
@@ -26,6 +26,7 @@
       _UAP_$(Platform)_$(Configuration)_dotnet.pdb;
       .pdb;
     </AllowedReferenceRelatedFileExtensions>
+    <PackageCertificateThumbprint>D1E485E1559FD4624934859D0EFCA51499C121C0</PackageCertificateThumbprint>
   </PropertyGroup>
   <PropertyGroup Condition="'$(Configuration)|$(Platform)' == 'Debug|ARM'">
     <DebugSymbols>true</DebugSymbols>
@@ -152,6 +153,7 @@
   </PropertyGroup>
   <ItemGroup>
     <!-- A reference to the entire .Net Framework and Windows SDK are automatically included -->
+    <None Include="PeerConnectionClientUnity_TemporaryKey.pfx" />
     <None Include="project.json" />
     <SDKReference Include="Microsoft.VCLibs, Version=14.0">
       <Name>Visual C++ 2015 Runtime for Universal Windows Platform Apps</Name>
@@ -353,7 +355,6 @@
     <None Include="UnityCommon.props">
       <SubType>Designer</SubType>
     </None>
-    <None Include="WSATestCertificate.pfx" />
   </ItemGroup>
   <ItemGroup>
     <Reference Include="UnityPlayer">

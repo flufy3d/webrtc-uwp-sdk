@@ -1,10 +1,10 @@
 ﻿<?xml version="1.0" encoding="utf-8"?>
 <Package xmlns:mp="http://schemas.microsoft.com/appx/2014/phone/manifest" xmlns:uap="http://schemas.microsoft.com/appx/manifest/uap/windows10" xmlns:uap2="http://schemas.microsoft.com/appx/manifest/uap/windows10/2" xmlns="http://schemas.microsoft.com/appx/manifest/foundation/windows10" IgnorableNamespaces="uap uap2 mp">
-  <Identity Name="PeerCCUnity" Publisher="CN=DefaultCompany" Version="1.0.0.0" />
+  <Identity Name="PeerCCUnity" Publisher="CN=eu360world" Version="1.0.0.0" />
   <mp:PhoneIdentity PhoneProductId="119b0a79-41fe-4bad-ad9b-208606acab61" PhonePublisherId="00000000-0000-0000-0000-000000000000" />
   <Properties>
     <DisplayName>PeerCCUnity</DisplayName>
-    <PublisherDisplayName>OpticalTone</PublisherDisplayName>
+    <PublisherDisplayName>360 World</PublisherDisplayName>
     <Logo>Assets\StoreLogo.png</Logo>
   </Properties>
   <Dependencies>

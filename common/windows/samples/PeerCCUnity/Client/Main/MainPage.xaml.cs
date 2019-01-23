@@ -44,8 +44,8 @@ namespace PeerConnectionClient
 #if UNITY
         private WinRTBridge.WinRTBridge _bridge;
 
-        private SplashScreen splash;
-        private Rect splashImageRect;
+        //private SplashScreen splash;
+        //private Rect splashImageRect;
         private WindowSizeChangedEventHandler onResizeHandler;
         private bool isPhone = false;
 #endif
@@ -124,11 +124,13 @@ namespace PeerConnectionClient
 #if UNITY
         private void OnResize()
         {
+            /*
             if (splash != null)
             {
                 splashImageRect = splash.ImageLocation;
                 PositionImage();
             }
+            */
         }
 
         private void PositionImage()

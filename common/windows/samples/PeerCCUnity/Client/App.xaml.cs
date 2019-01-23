@@ -128,7 +128,8 @@ namespace PeerConnectionClient
         {
 #if UNITY
 #if UNITY_UWP
-            ApplicationView.GetForCurrentView().SuppressSystemOverlays = true;
+            //ApplicationView.GetForCurrentView().SuppressSystemOverlays = true;
+            ApplicationView.GetForCurrentView().TryEnterFullScreenMode();
 #endif
             appCallbacks.SetAppArguments(args);
             appCallbacks.AddCommandLineArg("-force-d3d11-no-singlethreaded");
