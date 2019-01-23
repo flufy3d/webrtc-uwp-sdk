@@ -561,10 +561,10 @@ PlayerSettings:
   scriptingDefineSymbols: {}
   platformArchitecture: {}
   scriptingBackend:
-    Metro: 2
+    Metro: 1
   incrementalIl2cppBuild: {}
   additionalIl2CppArgs: 
-  scriptingRuntimeVersion: 0
+  scriptingRuntimeVersion: 1
   apiCompatibilityLevelPerPlatform: {}
   m_RenderingPath: 1
   m_MobileRenderingPath: 1
@@ -572,9 +572,9 @@ PlayerSettings:
   metroPackageVersion: 1.0.0.0
   metroCertificatePath: Assets\WSATestCertificate.pfx
   metroCertificatePassword: 
-  metroCertificateSubject: DefaultCompany
-  metroCertificateIssuer: DefaultCompany
-  metroCertificateNotAfter: 800dfa209591d401
+  metroCertificateSubject: OpticalTone
+  metroCertificateIssuer: OpticalTone
+  metroCertificateNotAfter: 80e49be65fd2d501
   metroApplicationDescription: PeerCCUnity
   wsaImages: {}
   metroTileShortName: UnityVideoSurface

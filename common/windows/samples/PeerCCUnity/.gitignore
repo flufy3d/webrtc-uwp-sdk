@@ -33,4 +33,8 @@ ClientUnity/Unity/PeerCCUnity/Assets/Plugins/WSA/x64/*.winmd
 ClientUnity/Unity/PeerCCUnity/Assets/Plugins/WSA/x64/*.pdb
 ClientUnity/Unity/PeerCCUnity/Library
 ClientUnity/Unity/PeerCCUnity/UnityPackageManager
+ClientUnity/Unity/PeerCCUnity/Temp
 ClientUnity/Unity/PeerCCUnity/UWP
+
+*.meta
+
