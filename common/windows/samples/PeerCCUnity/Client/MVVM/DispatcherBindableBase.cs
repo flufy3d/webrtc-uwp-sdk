@@ -12,6 +12,8 @@
 using System;
 using Windows.UI.Core;
 
+using PeerConnectionClient.Signalling;
+
 namespace PeerConnectionClient.MVVM
 {
     /// <summary>

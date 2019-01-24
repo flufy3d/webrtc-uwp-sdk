@@ -10,7 +10,7 @@
 //*********************************************************
 
 using System.Xml.Serialization;
-using PeerConnectionClient.MVVM;
+using PeerConnectionClient.Signalling;
 
 namespace PeerConnectionClient.Utilities
 {

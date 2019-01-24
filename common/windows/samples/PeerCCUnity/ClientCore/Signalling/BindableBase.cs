@@ -15,7 +15,7 @@ using System.Linq.Expressions;
 using System.Reflection;
 using System.Runtime.CompilerServices;
 
-namespace PeerConnectionClient.MVVM
+namespace PeerConnectionClient.Signalling
 {
     /// <summary>
     /// The BindableBase class of the MVVM pattern.

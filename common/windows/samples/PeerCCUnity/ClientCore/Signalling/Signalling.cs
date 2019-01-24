@@ -146,7 +146,7 @@ namespace PeerConnectionClient.Signalling
             try
             {
                 int index = buffer.IndexOf(header);
-                if(index == -1)
+                if (index == -1)
                 {
                     if (optional)
                     {
@@ -173,7 +173,7 @@ namespace PeerConnectionClient.Signalling
                 }
             }
         }
-       
+
         /// <summary>
         /// Gets the string value from the message header.
         /// </summary>
@@ -186,7 +186,7 @@ namespace PeerConnectionClient.Signalling
             try
             {
                 int startIndex = buffer.IndexOf(header);
-                if(startIndex == -1)
+                if (startIndex == -1)
                 {
                     value = null;
                     return false;
@@ -461,6 +461,7 @@ namespace PeerConnectionClient.Signalling
                         {
                             return;
                         }
+
                         // Send the request
                         _hangingGetSocket.WriteStringAsync(String.Format("GET /wait?peer_id={0} HTTP/1.0\r\n\r\n", _myId));
 
@@ -470,6 +471,7 @@ namespace PeerConnectionClient.Signalling
                         {
                             continue;
                         }
+
                         string buffer = readResult.Item1;
                         int content_length = readResult.Item2;
 
@@ -518,7 +520,7 @@ namespace PeerConnectionClient.Signalling
                     }
                     catch (Exception e)
                     {
-                        Debug.WriteLine("[Error] Signaling: Long-polling exception: " + e.Message);
+                        Debug.WriteLine("[Error] Signaling: Long-polling exception: {0}", e.Message);
                     }
                 }
             }
