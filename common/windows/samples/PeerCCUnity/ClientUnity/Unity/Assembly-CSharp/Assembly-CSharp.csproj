@@ -359,6 +359,10 @@
     </Compile>
   </ItemGroup>
   <ItemGroup>
+    <ProjectReference Include="..\..\..\..\..\..\..\webrtc\windows\projects\msvc\Org.WebRtc.Universal\Org.WebRtc.vcxproj">
+      <Project>{3dd8fdcd-b703-4b75-826a-2c7e844f903e}</Project>
+      <Name>Org.WebRtc</Name>
+    </ProjectReference>
     <ProjectReference Include="..\..\..\ClientCore\PeerConnectionClientUnityD3DCore.csproj">
       <Project>{77f09e16-dc5b-4cb2-b179-653e26fa2faa}</Project>
       <Name>PeerConnectionClientUnityD3DCore</Name>

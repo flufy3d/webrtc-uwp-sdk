@@ -13,7 +13,7 @@ using System;
 using System.Diagnostics;
 using Windows.UI.Popups;
 using Windows.UI.Core;
-using PeerConnectionClient.MVVM;
+using PeerConnectionClient.Signalling;
 
 using System.Runtime.InteropServices.WindowsRuntime;
 using Windows.UI.Xaml;

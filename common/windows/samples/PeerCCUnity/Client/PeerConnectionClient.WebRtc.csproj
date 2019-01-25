@@ -103,7 +103,6 @@
     <Compile Include="App.xaml.cs">
       <DependentUpon>App.xaml</DependentUpon>
     </Compile>
-    <Compile Include="MVVM\DispatcherBindableBase.cs" />
     <Compile Include="Utilities\ActionCommand.cs" />
     <Compile Include="Utilities\BoolToVisConverter.cs" />
     <Compile Include="Utilities\InvertedBooleanConverter.cs" />

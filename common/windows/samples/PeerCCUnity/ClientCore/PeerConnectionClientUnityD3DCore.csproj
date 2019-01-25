@@ -88,10 +88,15 @@
   </PropertyGroup>
   <ItemGroup>
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="Signalling\BindableBase.cs" />
     <Compile Include="Signalling\Conductor.cs" />
+    <Compile Include="Signalling\DispatcherBindableBase.cs" />
     <Compile Include="Signalling\Signalling.cs" />
     <Compile Include="Utilities\AppPerf.cs" />
     <Compile Include="Utilities\SdpUtils.cs" />
+    <Compile Include="Utilities\ValidableBase.cs" />
+    <Compile Include="Utilities\ValidableIntegerString.cs" />
+    <Compile Include="Utilities\ValidableNonEmptyString.cs" />
     <Compile Include="Utilities\XmlSerializer.cs" />
     <EmbeddedResource Include="Properties\Default.rd.xml">
       <SubType>Designer</SubType>
@@ -99,11 +104,14 @@
   </ItemGroup>
   <ItemGroup>
     <PackageReference Include="Microsoft.NETCore.UniversalWindowsPlatform">
-      <Version>5.0.0</Version>
+      <Version>6.1.5</Version>
     </PackageReference>
-    <PackageReference Include="WebRtc">
-      <Version>1.62.1.1-Beta</Version>
-    </PackageReference>
+  </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\..\..\..\..\webrtc\windows\projects\msvc\Org.WebRtc.Universal\Org.WebRtc.vcxproj">
+      <Project>{3dd8fdcd-b703-4b75-826a-2c7e844f903e}</Project>
+      <Name>Org.WebRtc</Name>
+    </ProjectReference>
   </ItemGroup>
   <PropertyGroup Condition=" '$(VisualStudioVersion)' == '' or '$(VisualStudioVersion)' &lt; '14.0' ">
     <VisualStudioVersion>14.0</VisualStudioVersion>
@@ -114,16 +122,20 @@
 SETLOCAL
       set TARGET_PLUGIN_PATH=$(ProjectDir)..\ClientUnity\Unity\PeerCCUnity\Assets\
 
-      echo Target Plugin Path is %TARGET_PLUGIN_PATH%
+      echo Target Plugin Path is %25TARGET_PLUGIN_PATH%25
 
-      mkdir "%TARGET_PLUGIN_PATH%Plugins"
-      mkdir "%TARGET_PLUGIN_PATH%Plugins\WSA"
+      mkdir "%25TARGET_PLUGIN_PATH%25Plugins"
+      mkdir "%25TARGET_PLUGIN_PATH%25Plugins\WSA"
 
-      copy /Y "$(TargetDir)$(TargetFileName)" "%TARGET_PLUGIN_PATH%Plugins\WSA\$(TargetFileName)"
-      copy /Y "$(TargetDir)$(TargetName).winmd" "%TARGET_PLUGIN_PATH%Plugins\WSA\$(TargetName).winmd"
-      copy /Y "$(TargetDir)$(TargetName).pdb" "%TARGET_PLUGIN_PATH%Plugins\WSA\$(TargetName).pdb"
+      copy /Y "$(TargetDir)$(TargetFileName)" "%25TARGET_PLUGIN_PATH%25Plugins\WSA\$(TargetFileName)"
+      copy /Y "$(TargetDir)$(TargetName).winmd" "%25TARGET_PLUGIN_PATH%25Plugins\WSA\$(TargetName).winmd"
+      copy /Y "$(TargetDir)$(TargetName).pdb" "%25TARGET_PLUGIN_PATH%25Plugins\WSA\$(TargetName).pdb"
+      xcopy /y "$(ProjectDir)..\..\..\..\..\webrtc\windows\solutions\Build\Output\Org.WebRtc\$(ConfigurationName)\$(PlatformName)\Org.WebRtc.dll" "$(ProjectDir)..\ClientUnity\Unity\PeerCCUnity\Assets\Plugins\WSA\x86\"
+      xcopy /y "$(ProjectDir)..\..\..\..\..\webrtc\windows\solutions\Build\Output\Org.WebRtc\$(ConfigurationName)\$(PlatformName)\Org.WebRtc.winmd" "$(ProjectDir)..\ClientUnity\Unity\PeerCCUnity\Assets\Plugins\WSA\x86\"
+      xcopy /y "$(ProjectDir)..\..\..\..\..\webrtc\windows\solutions\Build\Output\Org.WebRtc\$(ConfigurationName)\$(PlatformName)\Org.WebRtc.pdb" "$(ProjectDir)..\ClientUnity\Unity\PeerCCUnity\Assets\Plugins\WSA\x86\"
+
 ENDLOCAL
-    </PostBuildEvent>
+</PostBuildEvent>
   </PropertyGroup>
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
        Other similar extension points exist, see Microsoft.Common.targets.

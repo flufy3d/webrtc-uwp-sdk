@@ -89,6 +89,7 @@
   <ItemGroup>
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Signalling\Conductor.cs" />
+    <Compile Include="Signalling\DispatcherBindableBase.cs" />
     <Compile Include="Signalling\Signalling.cs" />
     <Compile Include="Utilities\AppPerf.cs" />
     <Compile Include="Signalling\BindableBase.cs" />
@@ -118,18 +119,6 @@
   <Import Project="$(MSBuildExtensionsPath)\Microsoft\WindowsXaml\v$(VisualStudioVersion)\Microsoft.Windows.UI.Xaml.CSharp.targets" />
   <PropertyGroup>
     <PostBuildEvent>
-SETLOCAL
-      set TARGET_PLUGIN_PATH=$(ProjectDir)..\ClientUnity\Unity\PeerCCUnity\Assets\
-
-      echo Target Plugin Path is %TARGET_PLUGIN_PATH%
-
-      mkdir "%TARGET_PLUGIN_PATH%Plugins"
-      mkdir "%TARGET_PLUGIN_PATH%Plugins\WSA"
-
-      copy /Y "$(TargetDir)$(TargetFileName)" "%TARGET_PLUGIN_PATH%Plugins\WSA\$(TargetFileName)"
-      copy /Y "$(TargetDir)$(TargetName).winmd" "%TARGET_PLUGIN_PATH%Plugins\WSA\$(TargetName).winmd"
-      copy /Y "$(TargetDir)$(TargetName).pdb" "%TARGET_PLUGIN_PATH%Plugins\WSA\$(TargetName).pdb"
-ENDLOCAL
     </PostBuildEvent>
   </PropertyGroup>
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 

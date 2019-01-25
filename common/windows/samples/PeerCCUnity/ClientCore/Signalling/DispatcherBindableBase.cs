@@ -12,9 +12,7 @@
 using System;
 using Windows.UI.Core;
 
-using PeerConnectionClient.Signalling;
-
-namespace PeerConnectionClient.MVVM
+namespace PeerConnectionClient.Signalling
 {
     /// <summary>
     /// Provides ability to run the UI updates in UI thread.
