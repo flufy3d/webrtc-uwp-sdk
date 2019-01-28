@@ -195,6 +195,8 @@ public class ControlScript : MonoBehaviour
 #if !UNITY_EDITOR
     public void Initialize(CoreDispatcher uiDispatcher)
     {
+        var queue = Org.WebRtc.EventQueueMaker.Bind(uiDispatcher);
+        Org.WebRtc.WebRtcLib.Setup(queue);
 
         var settings = ApplicationData.Current.LocalSettings;
 
@@ -235,6 +237,30 @@ public class ControlScript : MonoBehaviour
             {
                 SelectedCamera = Cameras.First();
             }
+
+    
+            var opRes = SelectedCamera.GetVideoCaptureCapabilities();
+            await opRes.AsTask().ContinueWith(resolutions =>
+            {
+                var uniqueRes = resolutions.Result.GroupBy(test => test.ResolutionDescription).Select(grp => grp.First()).ToList();
+                Conductor.CaptureCapability defaultResolution = null;
+                foreach (var resolution in uniqueRes)
+                {
+                    if (defaultResolution == null)
+                    {
+                        defaultResolution = resolution;
+                    }
+
+                    if ((resolution.Width == 896) && (resolution.Height == 504))
+                    {
+                        defaultResolution = resolution;
+                    }
+                }
+
+                Conductor.Instance.VideoCaptureProfile = defaultResolution;
+
+            });
+
         });
 
 
@@ -326,7 +352,10 @@ public class ControlScript : MonoBehaviour
             {
                 Debug.Log("OnPeerConnectionClosed");
 
+                IsConnectedToPeer = false;
 
+                if (null != _peerVideoTrack) _peerVideoTrack.Element = null; // Org.WebRtc.MediaElementMaker.Bind(obj);
+                if (null != _selfVideoTrack) _selfVideoTrack.Element = null; // Org.WebRtc.MediaElementMaker.Bind(obj);
 
                 _peerVideoTrack = null;
                 _selfVideoTrack = null;

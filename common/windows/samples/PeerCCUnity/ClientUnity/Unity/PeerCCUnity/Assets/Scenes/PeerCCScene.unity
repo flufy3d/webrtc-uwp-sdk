@@ -392,7 +392,6 @@ GameObject:
   - component: {fileID: 550028340}
   - component: {fileID: 550028342}
   - component: {fileID: 550028341}
-  - component: {fileID: 550028343}
   - component: {fileID: 550028345}
   - component: {fileID: 550028344}
   m_Layer: 5
@@ -457,19 +456,6 @@ CanvasRenderer:
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 550028339}
---- !u!114 &550028343
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 0}
-  m_GameObject: {fileID: 550028339}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 6260edfe7b7f1864a879862d4479f51f, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  ConnectButton: {fileID: 1477723872}
-  CallButton: {fileID: 1897260778}
 --- !u!114 &550028344
 MonoBehaviour:
   m_ObjectHideFlags: 0
