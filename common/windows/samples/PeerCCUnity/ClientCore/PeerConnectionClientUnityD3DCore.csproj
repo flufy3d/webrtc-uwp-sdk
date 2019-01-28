@@ -130,9 +130,9 @@ SETLOCAL
       copy /Y "$(TargetDir)$(TargetFileName)" "%25TARGET_PLUGIN_PATH%25Plugins\WSA\$(TargetFileName)"
       copy /Y "$(TargetDir)$(TargetName).winmd" "%25TARGET_PLUGIN_PATH%25Plugins\WSA\$(TargetName).winmd"
       copy /Y "$(TargetDir)$(TargetName).pdb" "%25TARGET_PLUGIN_PATH%25Plugins\WSA\$(TargetName).pdb"
-      xcopy /y "$(ProjectDir)..\..\..\..\..\webrtc\windows\solutions\Build\Output\Org.WebRtc\$(ConfigurationName)\$(PlatformName)\Org.WebRtc.dll" "$(ProjectDir)..\ClientUnity\Unity\PeerCCUnity\Assets\Plugins\WSA\x86\"
-      xcopy /y "$(ProjectDir)..\..\..\..\..\webrtc\windows\solutions\Build\Output\Org.WebRtc\$(ConfigurationName)\$(PlatformName)\Org.WebRtc.winmd" "$(ProjectDir)..\ClientUnity\Unity\PeerCCUnity\Assets\Plugins\WSA\x86\"
-      xcopy /y "$(ProjectDir)..\..\..\..\..\webrtc\windows\solutions\Build\Output\Org.WebRtc\$(ConfigurationName)\$(PlatformName)\Org.WebRtc.pdb" "$(ProjectDir)..\ClientUnity\Unity\PeerCCUnity\Assets\Plugins\WSA\x86\"
+      xcopy /y "$(ProjectDir)..\Build\Output\Org.WebRtc\$(ConfigurationName)\$(PlatformName)\Org.WebRtc.dll" "$(ProjectDir)..\ClientUnity\Unity\PeerCCUnity\Assets\Plugins\WSA\x86\"
+      xcopy /y "$(ProjectDir)..\Build\Output\Org.WebRtc\$(ConfigurationName)\$(PlatformName)\Org.WebRtc.winmd" "$(ProjectDir)..\ClientUnity\Unity\PeerCCUnity\Assets\Plugins\WSA\x86\"
+      xcopy /y "$(ProjectDir)..\Build\Output\Org.WebRtc\$(ConfigurationName)\$(PlatformName)\Org.WebRtc.pdb" "$(ProjectDir)..\ClientUnity\Unity\PeerCCUnity\Assets\Plugins\WSA\x86\"
 
 ENDLOCAL
 </PostBuildEvent>

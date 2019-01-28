@@ -429,11 +429,11 @@
     <Message Importance="high" Text="UnityWSAPlayerDir &quot;$(UnityWSAPlayerDir)&quot;." />
     <Message Importance="high" Text="UnityProjectDir &quot;$(UnityProjectDir)&quot;." />
     <Message Importance="high" Text="Copying unprocessed assemblies..." />
-    <Copy SourceFiles="$(ProjectDir)..\..\..\..\..\webrtc\windows\solutions\Build\Output\Org.WebRtc\$(ConfigurationName)\$(PlatformName)\Org.WebRtc.dll" DestinationFiles="$(ProjectDir)Org.WebRtc.dll" />
-    <Copy SourceFiles="$(ProjectDir)..\..\..\..\..\webrtc\windows\solutions\Build\Output\Org.WebRtc\$(ConfigurationName)\$(PlatformName)\Org.WebRtc.winmd" DestinationFiles="$(ProjectDir)Org.WebRtc.winmd" />
+    <Copy SourceFiles="$(ProjectDir)..\Build\Output\Org.WebRtc\$(ConfigurationName)\$(PlatformName)\Org.WebRtc.dll" DestinationFiles="$(ProjectDir)Org.WebRtc.dll" />
+    <Copy SourceFiles="$(ProjectDir)..\Build\Output\Org.WebRtc\$(ConfigurationName)\$(PlatformName)\Org.WebRtc.winmd" DestinationFiles="$(ProjectDir)Org.WebRtc.winmd" />
     <Delete Files="$(ProjectDir)Org.WebRtc.pdb" Condition="Exists('$(ProjectDir)Org.WebRtc.pdb')" />
     <Delete Files="$(ProjectDir)Org.WebRtc.dll.mdb" Condition="Exists('$(ProjectDir)Org.WebRtc.dll.mdb')" />
-    <Copy SourceFiles="$(ProjectDir)..\..\..\..\..\webrtc\windows\solutions\Build\Output\Org.WebRtc\$(ConfigurationName)\$(PlatformName)\Org.WebRtc.pdb" DestinationFiles="$(ProjectDir)Org.WebRtc.pdb" Condition="Exists('$(OutDir)Org.WebRtc.pdb')" />
+    <Copy SourceFiles="$(ProjectDir)..\Build\Output\Org.WebRtc\$(ConfigurationName)\$(PlatformName)\Org.WebRtc.pdb" DestinationFiles="$(ProjectDir)Org.WebRtc.pdb" Condition="Exists('$(OutDir)Org.WebRtc.pdb')" />
     <Copy SourceFiles="@(UnprocessedFileCommon)" DestinationFolder="$(ProjectDir)" />
     <Copy SourceFiles="..\Output\PeerCC.ClientUnityD3D.Assembly-CSharp\WebRtc\bin\$(PlatformName)\$(ConfigurationName)\Assembly-CSharp.dll" DestinationFiles="$(ProjectDir)Assembly-CSharp.dll" />
     <Copy SourceFiles="..\Output\PeerCC.ClientUnityD3D.Assembly-CSharp\WebRtc\bin\$(PlatformName)\$(ConfigurationName)\Assembly-CSharp.pdb" DestinationFiles="$(ProjectDir)Assembly-CSharp.pdb" Condition="Exists('..\Output\PeerCC.ClientUnityD3D.Assembly-CSharp\WebRtc\bin\$(PlatformName)\$(ConfigurationName)\Assembly-CSharp.pdb')" />

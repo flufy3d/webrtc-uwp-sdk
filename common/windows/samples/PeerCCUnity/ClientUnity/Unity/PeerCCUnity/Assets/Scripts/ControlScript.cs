@@ -84,7 +84,7 @@ public class ControlScript : MonoBehaviour
     {
     }
 
-
+#if !UNITY_EDITOR
     private List<MediaDevice> Cameras;
     private List<MediaDevice> Microphones;
     private List<MediaDevice> AudioPlayoutDevices;
@@ -117,6 +117,7 @@ public class ControlScript : MonoBehaviour
 
     private Peer _selectedPeer;
 
+#endif
 
     private bool IsConnected = false;
 
@@ -134,12 +135,12 @@ public class ControlScript : MonoBehaviour
 
     private bool IsConnectedToPeer = false;
 
-
+#if !UNITY_EDITOR
     private UseMediaStreamTrack _peerVideoTrack;
     private UseMediaStreamTrack _selfVideoTrack;
     private UseMediaStreamTrack _peerAudioTrack;
     private UseMediaStreamTrack _selfAudioTrack;
-
+#endif
 
     public bool bCameraEnabled = true;
 
@@ -147,7 +148,7 @@ public class ControlScript : MonoBehaviour
 
     private String PeerConnectionHealthStats;
 
-
+#if !UNITY_EDITOR
     private ObservableCollection<IceServer> IceServers;
 
     private IceServer NewIceServer;
@@ -188,10 +189,10 @@ public class ControlScript : MonoBehaviour
         }
     }
 
-    /// <summary>
-    /// The initializer for MainViewModel.
-    /// </summary>
-    /// <param name="uiDispatcher">The UI dispatcher.</param>
+#endif
+
+
+#if !UNITY_EDITOR
     public void Initialize(CoreDispatcher uiDispatcher)
     {
 
@@ -431,6 +432,7 @@ public class ControlScript : MonoBehaviour
         LoadSettings();
 
     }
+#endif
 
     void Start()
     {
@@ -731,7 +733,7 @@ public class ControlScript : MonoBehaviour
     {
         var asyncOp = CoreApplication.MainView.CoreWindow.Dispatcher.RunAsync(CoreDispatcherPriority.Normal, new DispatchedHandler(fn));
     }
-#endif
+
 
     private void Conductor_OnAddRemoteTrack(UseMediaStreamTrack track)
     {
@@ -819,9 +821,9 @@ public class ControlScript : MonoBehaviour
         var settings = ApplicationData.Current.LocalSettings;
 
         // Default values:
-        var configTraceServerIp = "127.0.0.1";
+        var configTraceServerIp = "192.168.11.132";
         var configTraceServerPort = "55000";
-        var peerCcServerIp = new ValidableNonEmptyString("127.0.0.1");
+        var peerCcServerIp = new ValidableNonEmptyString("192.168.11.132");
         var ntpServerAddress = new ValidableNonEmptyString("time.windows.com");
         var peerCcPortInt = 8888;
 
@@ -889,7 +891,7 @@ public class ControlScript : MonoBehaviour
 
         Conductor.Instance.ConfigureIceServers(configIceServers);
     }
-
+#endif
     private static class Plugin
     {
         [DllImport("MediaEngineUWP", CallingConvention = CallingConvention.StdCall, EntryPoint = "CreateLocalMediaPlayback")]
