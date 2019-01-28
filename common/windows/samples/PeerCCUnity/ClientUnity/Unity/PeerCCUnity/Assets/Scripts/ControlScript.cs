@@ -250,7 +250,10 @@ public class ControlScript : MonoBehaviour
                     Conductor.Instance.Peers = Peers;
                 }
                 Peers.Add(new Peer { Id = peerId, Name = peerName });
+                System.Diagnostics.Debug.WriteLine("Peers.Add: " + peerName + " " + peerId.ToString());
             });
+            status = Status.Connected;
+            Debug.Log("OnPeerConnected!");
         };
 
         
@@ -456,7 +459,12 @@ public class ControlScript : MonoBehaviour
         });
         
 #endif
-        ServerAddressInputField.text = "peercc-server.ortclib.org";
+        ServerAddressInputField.text = "192.168.11.132";
+
+
+        Invoke("OnConnectClick", 20.0f);
+
+        Invoke("OnCallClick", 40.0f);
     }
 
     private void OnEnable()
@@ -629,6 +637,7 @@ public class ControlScript : MonoBehaviour
 
     public void OnConnectClick()
     {
+        Debug.Log("ConnectClick!");
 #if !UNITY_EDITOR
         lock (this)
         {
@@ -661,6 +670,8 @@ public class ControlScript : MonoBehaviour
 
     public void OnCallClick()
     {
+        Debug.Log("CallClick!");
+        selectedPeerIndex = 0;
 #if !UNITY_EDITOR
         lock (this)
         {

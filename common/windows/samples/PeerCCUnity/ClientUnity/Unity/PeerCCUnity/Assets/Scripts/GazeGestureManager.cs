@@ -31,10 +31,12 @@ public class GazeGestureManager : MonoBehaviour
                 if (FocusedObject.GetComponent<Button>() == ConnectButton)
                 {
                     ControlScript.Instance.OnConnectClick();
+                    Debug.Log("ConnectClick");
                 }
                 else if (FocusedObject.GetComponent<Button>() == CallButton)
                 {
                     ControlScript.Instance.OnCallClick();
+                    Debug.Log("CallClick");
                 }
             }
         };
@@ -79,7 +81,7 @@ public class GazeGestureManager : MonoBehaviour
                         buttonGazed = true;
                         FocusedObject = result.gameObject;
                     }
-                    System.Diagnostics.Debug.WriteLine(result.gameObject.name + " " + this.transform.position);
+                    //System.Diagnostics.Debug.WriteLine(result.gameObject.name + " " + this.transform.position);
                 }
                 if (!buttonGazed)
                     FocusedObject = null;

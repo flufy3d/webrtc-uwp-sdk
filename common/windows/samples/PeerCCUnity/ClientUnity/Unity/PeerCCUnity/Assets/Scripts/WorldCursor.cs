@@ -52,7 +52,7 @@ public class WorldCursor : MonoBehaviour
             {
                 bool buttonGazed = false;
                 GameObject firstGameObject = null;
-                System.Diagnostics.Debug.WriteLine("WorldCursor - RaycastAll objects hit");
+                //System.Diagnostics.Debug.WriteLine("WorldCursor - RaycastAll objects hit");
                 foreach (RaycastResult result in objects)
                 {
                     if (firstGameObject == null)
