@@ -581,16 +581,10 @@ namespace PeerConnectionClient.Signalling
             var config = new RTCConfiguration()
             {
                 BundlePolicy = RTCBundlePolicy.Balanced,
-#if ORTCLIB
-                SignalingMode = _signalingMode,
-                GatherOptions = new RTCIceGatherOptions()
-                {
-                    IceServers = new List<RTCIceServer>(_iceServers),
-                }
-#else
+
                 IceTransportPolicy = RTCIceTransportPolicy.All,
                 IceServers = _iceServers
-#endif
+
             };
 
             Debug.WriteLine("Conductor: Creating peer connection.");
@@ -607,17 +601,11 @@ namespace PeerConnectionClient.Signalling
             {
                 return false;
             }
-#if ORTCLIB
-            OrtcStatsManager.Instance.Initialize(_peerConnection);
-#endif
+
             OnPeerConnectionCreated?.Invoke();
 
             _peerConnection.OnIceCandidate += PeerConnection_OnIceCandidate;
-#if ORTCLIB
-            _peerConnection.OnTrack += PeerConnection_OnAddTrack;
-            _peerConnection.OnTrackGone += PeerConnection_OnRemoveTrack;
-            _peerConnection.OnIceConnectionStateChange += () => { Debug.WriteLine("Conductor: Ice connection state change, state=" + (null != _peerConnection ? _peerConnection.IceConnectionState.ToString() : "closed")); };
-#else
+
             _peerConnection.OnTrack += PeerConnection_OnTrack;
             _peerConnection.OnRemoveTrack += PeerConnection_OnRemoveTrack;
             //_peerConnection.OnConnectionHealthStats += PeerConnection_OnConnectionHealthStats;
@@ -639,42 +627,7 @@ namespace PeerConnectionClient.Signalling
             {
                 return false;
             }
-#endif
-#if ORTCLIB
-            var mediaStreamConstraints = new MediaStreamConstraints();
-            var tracks = await (MediaDevices.GetUserMedia(mediaStreamConstraints).AsTask<IReadOnlyList<IMediaStreamTrack>>());
-            IMediaStreamTrack localVideoTrack = null;
-            IMediaStreamTrack localAudioTrack = null;
-            if (tracks != null)
-            {
-                var audioCapabilities = RTCRtpSender.GetCapabilities(MediaStreamTrackKind.Audio);
-                var videoCapabilities = RTCRtpSender.GetCapabilities(MediaStreamTrackKind.Video);
 
-                var mediaStream = new MediaStream(tracks);
-                Debug.WriteLine("Conductor: Adding local media stream.");
-                var mediaStreamList = new List<IMediaStream>();
-                mediaStreamList.Add(mediaStream);
-                foreach (var mediaStreamTrack in tracks)
-                {
-                    //Create stream track configuration based on capabilities
-                    RTCMediaStreamTrackConfiguration configuration = null;
-                    if (mediaStreamTrack.Kind == MediaStreamTrackKind.Audio && audioCapabilities != null)
-                    {
-                        localAudioTrack = mediaStreamTrack;
-                        configuration =
-                            await Helper.GetTrackConfigurationForCapabilities(audioCapabilities, AudioCodec);
-                    }
-                    else if (mediaStreamTrack.Kind == MediaStreamTrackKind.Video && videoCapabilities != null)
-                    {
-                        localVideoTrack = mediaStreamTrack;
-                        configuration =
-                            await Helper.GetTrackConfigurationForCapabilities(videoCapabilities, VideoCodec);
-                    }
-                    if (configuration != null)
-                        await _peerConnection.AddTrack(mediaStreamTrack, mediaStreamList, configuration);
-                }
-            }
-#else
             var videoCapturer = VideoCapturer.Create(_selectedVideoDevice.Name, _selectedVideoDevice.Id);
             var videoTrackSource = VideoTrackSource.Create(videoCapturer, mediaConstraints);
             var localVideoTrack = MediaStreamTrack.CreateVideoTrack("SELF_VIDEO", videoTrackSource);
@@ -682,25 +635,20 @@ namespace PeerConnectionClient.Signalling
             AudioOptions audioOptions = new AudioOptions();
             var audioTrackSource = AudioTrackSource.Create(audioOptions);
             var localAudioTrack = MediaStreamTrack.CreateAudioTrack("SELF_AUDIO", audioTrackSource);
-#endif
+
 
             if (cancelationToken.IsCancellationRequested)
             {
                 return false;
             }
 
-#if !ORTCLIB
             Debug.WriteLine("Conductor: Adding local media tracks.");
             _peerConnection.AddTrack(localVideoTrack);
             _peerConnection.AddTrack(localAudioTrack);
-#endif
+
             OnAddLocalTrack?.Invoke(localVideoTrack);
             OnAddLocalTrack?.Invoke(localAudioTrack);
 
-            if (cancelationToken.IsCancellationRequested)
-            {
-                return false;
-            }
             return true;
         }
 
@@ -1119,9 +1067,7 @@ namespace PeerConnectionClient.Signalling
                 Debug.WriteLine("[Error] Conductor: We only support connecting to one peer at a time");
                 return;
             }
-#if ORTCLIB
-            _signalingMode = Helper.SignalingModeForClientName(peer.Name);
-#endif
+
             _connectToPeerCancelationTokenSource = new System.Threading.CancellationTokenSource();
             bool connectResult = await CreatePeerConnection(_connectToPeerCancelationTokenSource.Token);
             _connectToPeerTask = null;
@@ -1132,9 +1078,7 @@ namespace PeerConnectionClient.Signalling
                 _peerId = peer.Id;
                 var offerOptions = new RTCOfferOptions();
                 var offer = await _peerConnection.CreateOffer(offerOptions);
-#if ORTCLIB
-                var modifiedOffer = offer;
-#else
+
                 // Alter sdp to force usage of selected codecs
                 string modifiedSdp = offer.Sdp;
                 SdpUtils.SelectCodecs(ref modifiedSdp, AudioCodec.PreferredPayloadType, VideoCodec.PreferredPayloadType);
@@ -1142,13 +1086,11 @@ namespace PeerConnectionClient.Signalling
                 sdpInit.Sdp = modifiedSdp;
                 sdpInit.Type = offer.SdpType;
                 var modifiedOffer = new RTCSessionDescription(sdpInit);
-#endif
+
                 await _peerConnection.SetLocalDescription(modifiedOffer);
                 Debug.WriteLine("Conductor: Sending offer:\n" + modifiedOffer.Sdp);
                 SendSdp(modifiedOffer);
-#if ORTCLIB
-                OrtcStatsManager.Instance.StartCallWatch(SessionId, true);
-#endif
+
             }
         }
 

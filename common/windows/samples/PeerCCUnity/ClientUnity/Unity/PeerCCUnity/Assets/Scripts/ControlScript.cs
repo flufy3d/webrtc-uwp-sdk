@@ -7,6 +7,7 @@ using UnityEngine.UI;
 using System.Collections.Generic;
 using UnityEngine.EventSystems;
 
+
 #if !UNITY_EDITOR
 using Windows.Storage;
 using Windows.UI.Core;
@@ -14,6 +15,7 @@ using Windows.Foundation;
 using Windows.Media.Core;
 using System.Linq;
 using System.Threading.Tasks;
+using System.Threading;
 using PeerConnectionClient.Signalling;
 using Windows.ApplicationModel.Core;
 
@@ -75,10 +77,6 @@ public class ControlScript : MonoBehaviour
     private Status status = Status.NotConnected;
     private List<Command> commandQueue = new List<Command>();
     private int selectedPeerIndex = -1;
-
-    public ControlScript()
-    {
-    }
 
     void Awake()
     {
@@ -276,7 +274,7 @@ public class ControlScript : MonoBehaviour
                     Conductor.Instance.Peers = Peers;
                 }
                 Peers.Add(new Peer { Id = peerId, Name = peerName });
-                System.Diagnostics.Debug.WriteLine("Peers.Add: " + peerName + " " + peerId.ToString());
+                System.Diagnostics.Debug.WriteLine("Peers.Add: {0} {1}", peerName, peerId);
             });
             status = Status.Connected;
             Debug.Log("OnPeerConnected!");
@@ -491,9 +489,9 @@ public class ControlScript : MonoBehaviour
         ServerAddressInputField.text = "192.168.11.132";
 
 
-        Invoke("OnConnectClick", 20.0f);
+        Invoke("OnConnectClick", 5.0f);
 
-        Invoke("OnCallClick", 40.0f);
+        Invoke("OnCallClick", 10.0f);
     }
 
     private void OnEnable()
@@ -777,22 +775,49 @@ public class ControlScript : MonoBehaviour
 
     private void Conductor_OnAddRemoteTrack(UseMediaStreamTrack track)
     {
-        if (track.Kind == "video")
+        RunOnUiThread(() =>
         {
-            _peerVideoTrack = track;
-
-            if (_peerVideoTrack != null)
+            lock (this)
             {
-                var source = track.Source.Source;
-                Plugin.LoadRemoteMediaStreamSource((MediaStreamSource)source);
-            }
-        }
-        else if (track.Kind == "audio")
-        {
-            _peerAudioTrack = track;
-        }
 
-        IsReadyToDisconnect = true;
+                if (track.Kind == "video")
+                {
+                    _peerVideoTrack = track;
+
+                    if (_peerVideoTrack != null)
+                    {
+                        _peerVideoTrack.Enabled = true;
+
+                        var webrtc_source = _peerVideoTrack.Source;
+
+                        int count = 0;
+
+                        while (webrtc_source == null && count < 50)
+                        {
+                            Task.Delay(100).Wait();
+                            webrtc_source = _peerVideoTrack.Source;
+                            count += 1;
+                        }
+
+                        if (webrtc_source != null)
+                        {
+                            var source = webrtc_source.Source;
+                            Plugin.LoadRemoteMediaStreamSource((MediaStreamSource)source);
+                            Plugin.RemotePlay();
+                        }
+
+
+                    }
+                }
+                else if (track.Kind == "audio")
+                {
+                    _peerAudioTrack = track;
+                }
+
+                IsReadyToDisconnect = true;
+
+            }
+        });
     }
 
     private void Conductor_OnRemoveRemoteTrack(UseMediaStreamTrack track)
@@ -808,48 +833,64 @@ public class ControlScript : MonoBehaviour
 
     private void Conductor_OnAddLocalTrack(UseMediaStreamTrack track)
     {
-
-        if (track.Kind == "video")
+        RunOnUiThread(() =>
         {
-            _selfVideoTrack = track;
-            if (_selfVideoTrack != null)
+            lock (this)
             {
-                var source = track.Source.Source;
-                Plugin.LoadLocalMediaStreamSource((MediaStreamSource)source);
-
-
-                RunOnUiThread(() =>
+         
+                if (track.Kind == "video")
                 {
-                    if (bCameraEnabled)
+                    _selfVideoTrack = track;
+                    if (_selfVideoTrack != null)
                     {
-                        _selfVideoTrack.Enabled = true;
-                    }
-                    else
-                    {
-                        _selfVideoTrack.Enabled = false;
-                    }
-                });
+                        if (bCameraEnabled)
+                        {
+                            _selfVideoTrack.Enabled = true;
+                        }
+                        else
+                        {
+                            _selfVideoTrack.Enabled = false;
+                        }
 
-            }
-        }
-        if (track.Kind == "audio")
-        {
-            _selfAudioTrack = track;
-            if (_selfAudioTrack != null)
-            {
-                RunOnUiThread(() =>
+                        var webrtc_source = _selfVideoTrack.Source;
+
+                        int count = 0;
+
+                        while(webrtc_source == null && count < 50)
+                        {
+                            Task.Delay(100).Wait();
+                            webrtc_source = _selfVideoTrack.Source;
+                            count += 1;
+                        }
+                                                
+                        if(webrtc_source != null)
+                        {
+                            var source = webrtc_source.Source;
+                            Plugin.LoadLocalMediaStreamSource((MediaStreamSource)source);
+                            Plugin.LocalPlay();
+                        }
+
+                    }
+                }
+                if (track.Kind == "audio")
                 {
-                    if (bMicrophoneIsOn)
+                    _selfAudioTrack = track;
+                    if (_selfAudioTrack != null)
                     {
-                        _selfAudioTrack.Enabled = true;
+
+                        if (bMicrophoneIsOn)
+                        {
+                            _selfAudioTrack.Enabled = true;
+                        }
+                        else
+                        {
+                            _selfAudioTrack.Enabled = false;
+                        }
+
                     }
-                    else
-                    {
-                        _selfAudioTrack.Enabled = false;
-                    }
-                });
+                }
             }
-        }
+        });
     }
     private void Conductor_OnPeerConnectionHealthStats(String stats)
     {
@@ -921,12 +962,12 @@ public class ControlScript : MonoBehaviour
         RunOnUiThread(() =>
         {
             IceServers = configIceServers;
-            Debug.Log("TraceServerIp = " + configTraceServerIp.ToString());
-            Debug.Log("TraceServerPort = " + configTraceServerPort.ToString());
-            Debug.Log("Ip = " + peerCcServerIp.ToString());
-            Debug.Log("NtpServer = " + ntpServerAddress.ToString());
-            var Port = new ValidableIntegerString(peerCcPortInt, 0, 65535);
-            Debug.Log("Port = " + Port.ToString());
+            //Debug.Log("TraceServerIp = " + configTraceServerIp.ToString());
+            //Debug.Log("TraceServerPort = " + configTraceServerPort.ToString());
+            //Debug.Log("Ip = " + peerCcServerIp.ToString());
+            //Debug.Log("NtpServer = " + ntpServerAddress.ToString());
+            //var Port = new ValidableIntegerString(peerCcPortInt, 0, 65535);
+            //Debug.Log("Port = " + Port.ToString());
         });
 
         Conductor.Instance.ConfigureIceServers(configIceServers);
