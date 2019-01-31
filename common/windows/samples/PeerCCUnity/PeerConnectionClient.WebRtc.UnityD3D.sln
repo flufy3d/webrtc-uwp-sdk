@@ -51,8 +51,6 @@ Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "Shared", "MediaEnginePlayer
 EndProject
 Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "WebRtcScheme", "MediaEnginePlayerPlugin\WebRtcScheme\WebRtcScheme.vcxproj", "{B02463BF-335C-4D04-A8CD-975A875223EE}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Assembly-CSharp", "ClientUnity\Unity\Assembly-CSharp\Assembly-CSharp.csproj", "{661EFDE0-ED45-41A2-8E83-D8C6473D8988}"
-EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "PeerConnectionClientUnityD3DCore", "ClientCore\PeerConnectionClientUnityD3DCore.csproj", "{77F09E16-DC5B-4CB2-B179-653E26FA2FAA}"
 EndProject
 Global
