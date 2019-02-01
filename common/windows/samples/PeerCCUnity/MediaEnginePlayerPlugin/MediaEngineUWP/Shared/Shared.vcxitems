@@ -42,13 +42,15 @@
     <ClInclude Include="$(MSBuildThisFileDirectory)MediaEnginePlayer.h" />
     <ClInclude Include="$(MSBuildThisFileDirectory)MediaEngine.h" />
     <ClInclude Include="$(MSBuildThisFileDirectory)targetver.h" />
+    <ClInclude Include="$(MSBuildThisFileDirectory)Unity\IUnityEventQueue.h" />
     <ClInclude Include="$(MSBuildThisFileDirectory)Unity\IUnityGraphics.h" />
     <ClInclude Include="$(MSBuildThisFileDirectory)Unity\IUnityGraphicsD3D11.h" />
     <ClInclude Include="$(MSBuildThisFileDirectory)Unity\IUnityGraphicsD3D12.h" />
-    <ClInclude Include="$(MSBuildThisFileDirectory)Unity\IUnityGraphicsD3D9.h" />
     <ClInclude Include="$(MSBuildThisFileDirectory)Unity\IUnityGraphicsMetal.h" />
     <ClInclude Include="$(MSBuildThisFileDirectory)Unity\IUnityInterface.h" />
-    <ClInclude Include="$(MSBuildThisFileDirectory)Unity\PlatformBase.h" />
+    <ClInclude Include="$(MSBuildThisFileDirectory)Unity\IUnityProfilerCallbacks.h" />
+    <ClInclude Include="$(MSBuildThisFileDirectory)Unity\IUnityRenderingExtensions.h" />
+    <ClInclude Include="$(MSBuildThisFileDirectory)Unity\IUnityShaderCompilerAccess.h" />
   </ItemGroup>
   <ItemGroup>
     <None Include="$(MSBuildThisFileDirectory)..\UWP\MediaPlayback.def" />

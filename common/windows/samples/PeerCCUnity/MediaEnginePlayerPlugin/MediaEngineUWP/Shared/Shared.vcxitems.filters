@@ -7,10 +7,10 @@
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="$(MSBuildThisFileDirectory)targetver.h" />
-    <ClInclude Include="$(MSBuildThisFileDirectory)Unity\IUnityGraphics.h">
+    <ClInclude Include="$(MSBuildThisFileDirectory)Unity\IUnityEventQueue.h">
       <Filter>Unity</Filter>
     </ClInclude>
-    <ClInclude Include="$(MSBuildThisFileDirectory)Unity\IUnityGraphicsD3D9.h">
+    <ClInclude Include="$(MSBuildThisFileDirectory)Unity\IUnityGraphics.h">
       <Filter>Unity</Filter>
     </ClInclude>
     <ClInclude Include="$(MSBuildThisFileDirectory)Unity\IUnityGraphicsD3D11.h">
@@ -25,7 +25,13 @@
     <ClInclude Include="$(MSBuildThisFileDirectory)Unity\IUnityInterface.h">
       <Filter>Unity</Filter>
     </ClInclude>
-    <ClInclude Include="$(MSBuildThisFileDirectory)Unity\PlatformBase.h">
+    <ClInclude Include="$(MSBuildThisFileDirectory)Unity\IUnityProfilerCallbacks.h">
+      <Filter>Unity</Filter>
+    </ClInclude>
+    <ClInclude Include="$(MSBuildThisFileDirectory)Unity\IUnityRenderingExtensions.h">
+      <Filter>Unity</Filter>
+    </ClInclude>
+    <ClInclude Include="$(MSBuildThisFileDirectory)Unity\IUnityShaderCompilerAccess.h">
       <Filter>Unity</Filter>
     </ClInclude>
     <ClInclude Include="$(MSBuildThisFileDirectory)MediaHelpers.h" />

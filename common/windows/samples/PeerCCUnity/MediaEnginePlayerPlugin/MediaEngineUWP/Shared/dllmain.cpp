@@ -10,7 +10,7 @@
 //*********************************************************
 
 #include "MediaEngine.h"
-#include "Unity/PlatformBase.h"
+#include "Unity/IUnityGraphics.h"
 #include "MediaEnginePlayer.h"
 
 using namespace Microsoft::WRL;
@@ -21,7 +21,7 @@ using ABI::Windows::Foundation::Collections::IMap;
 using ABI::Windows::Foundation::Collections::IPropertySet;
 using Microsoft::WRL::Wrappers::HStringReference;
 
-static UnityGfxRenderer s_DeviceType = kUnityGfxRenderernullptr;
+static UnityGfxRenderer s_DeviceType = kUnityGfxRendererNull;
 static IUnityInterfaces* s_UnityInterfaces = nullptr;
 static IUnityGraphics* s_Graphics = nullptr;
 
@@ -229,7 +229,7 @@ static void UNITY_INTERFACE_API OnGraphicsDeviceEvent(UnityGfxDeviceEventType ev
     // Cleanup graphics API implementation upon shutdown
     if (eventType == kUnityGfxDeviceEventShutdown)
     {
-        s_DeviceType = kUnityGfxRenderernullptr;
+        s_DeviceType = kUnityGfxRendererNull;
     }
 }
 
