@@ -488,10 +488,6 @@ public class ControlScript : MonoBehaviour
 #endif
         ServerAddressInputField.text = "192.168.11.132";
 
-
-        Invoke("OnConnectClick", 5.0f);
-
-        Invoke("OnCallClick", 10.0f);
     }
 
     private void OnEnable()
@@ -754,6 +750,18 @@ public class ControlScript : MonoBehaviour
 #endif
     }
 
+    public void OnDisConnect()
+    {
+
+#if !UNITY_EDITOR
+        new Task(async () =>
+        {
+            await Conductor.Instance.DisconnectFromServer();
+            IsConnected = false;
+        }).Start();
+#endif
+
+    }
 #if !UNITY_EDITOR
     //call while OnSuspending
     public async Task OnAppSuspending()
