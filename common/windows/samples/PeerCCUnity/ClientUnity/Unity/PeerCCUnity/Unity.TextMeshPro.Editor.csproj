@@ -5,9 +5,9 @@
     <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
     <ProductVersion>10.0.20506</ProductVersion>
     <SchemaVersion>2.0</SchemaVersion>
-    <ProjectGuid>{7DC0DEAF-8D7A-90DB-5A9D-72D4C35BB148}</ProjectGuid>
+    <ProjectGuid>{3A848AB7-9891-EDDA-D555-BF184C2F81F4}</ProjectGuid>
     <OutputType>Library</OutputType>
-    <AssemblyName>Assembly-CSharp</AssemblyName>
+    <AssemblyName>Unity.TextMeshPro.Editor</AssemblyName>
     <FileAlignment>512</FileAlignment>
     <ProjectTypeGuids>{E097FAD1-6243-4DAD-9C02-E9B9EFC3FFC1};{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}</ProjectTypeGuids>
     <TargetFrameworkIdentifier>.NETFramework</TargetFrameworkIdentifier>
@@ -15,7 +15,7 @@
     <TargetFrameworkProfile></TargetFrameworkProfile>
     <CompilerResponseFile></CompilerResponseFile>
     <UnityProjectGenerator>VSTU</UnityProjectGenerator>
-    <UnityProjectType>Game:1</UnityProjectType>
+    <UnityProjectType>Editor:5</UnityProjectType>
     <UnityBuildTarget>WSAPlayer:21</UnityBuildTarget>
     <UnityVersion>2018.3.6f1</UnityVersion>
     <RootNamespace></RootNamespace>
@@ -233,17 +233,53 @@
     <Reference Include="UnityEngine.UI">
       <HintPath>C:/Program Files/Unity/Hub/Editor/2018.3.6f1/Editor/Data/UnityExtensions/Unity/GUISystem/UnityEngine.UI.dll</HintPath>
     </Reference>
+    <Reference Include="UnityEditor.UI">
+      <HintPath>C:/Program Files/Unity/Hub/Editor/2018.3.6f1/Editor/Data/UnityExtensions/Unity/GUISystem/Editor/UnityEditor.UI.dll</HintPath>
+    </Reference>
     <Reference Include="UnityEngine.Timeline">
       <HintPath>C:/Program Files/Unity/Hub/Editor/2018.3.6f1/Editor/Data/UnityExtensions/Unity/Timeline/RuntimeEditor/UnityEngine.Timeline.dll</HintPath>
+    </Reference>
+    <Reference Include="UnityEditor.Timeline">
+      <HintPath>C:/Program Files/Unity/Hub/Editor/2018.3.6f1/Editor/Data/UnityExtensions/Unity/Timeline/Editor/UnityEditor.Timeline.dll</HintPath>
     </Reference>
     <Reference Include="UnityEngine.Networking">
       <HintPath>C:/Program Files/Unity/Hub/Editor/2018.3.6f1/Editor/Data/UnityExtensions/Unity/Networking/UnityEngine.Networking.dll</HintPath>
     </Reference>
+    <Reference Include="UnityEditor.Networking">
+      <HintPath>C:/Program Files/Unity/Hub/Editor/2018.3.6f1/Editor/Data/UnityExtensions/Unity/Networking/Editor/UnityEditor.Networking.dll</HintPath>
+    </Reference>
+    <Reference Include="UnityEditor.GoogleAudioSpatializer">
+      <HintPath>C:/Program Files/Unity/Hub/Editor/2018.3.6f1/Editor/Data/UnityExtensions/Unity/UnityGoogleAudioSpatializer/Editor/UnityEditor.GoogleAudioSpatializer.dll</HintPath>
+    </Reference>
     <Reference Include="UnityEngine.GoogleAudioSpatializer">
       <HintPath>C:/Program Files/Unity/Hub/Editor/2018.3.6f1/Editor/Data/UnityExtensions/Unity/UnityGoogleAudioSpatializer/RuntimeEditor/UnityEngine.GoogleAudioSpatializer.dll</HintPath>
     </Reference>
+    <Reference Include="UnityEditor.SpatialTracking">
+      <HintPath>C:/Program Files/Unity/Hub/Editor/2018.3.6f1/Editor/Data/UnityExtensions/Unity/UnitySpatialTracking/Editor/UnityEditor.SpatialTracking.dll</HintPath>
+    </Reference>
     <Reference Include="UnityEngine.SpatialTracking">
       <HintPath>C:/Program Files/Unity/Hub/Editor/2018.3.6f1/Editor/Data/UnityExtensions/Unity/UnitySpatialTracking/RuntimeEditor/UnityEngine.SpatialTracking.dll</HintPath>
+    </Reference>
+    <Reference Include="UnityEditor.VR">
+      <HintPath>C:/Program Files/Unity/Hub/Editor/2018.3.6f1/Editor/Data/UnityExtensions/Unity/UnityVR/Editor/UnityEditor.VR.dll</HintPath>
+    </Reference>
+    <Reference Include="UnityEditor.Graphs">
+      <HintPath>C:/Program Files/Unity/Hub/Editor/2018.3.6f1/Editor/Data/Managed/UnityEditor.Graphs.dll</HintPath>
+    </Reference>
+    <Reference Include="UnityEditor.WSA.Extensions">
+      <HintPath>C:/Program Files/Unity/Hub/Editor/2018.3.6f1/Editor/Data/PlaybackEngines/MetroSupport/UnityEditor.WSA.Extensions.dll</HintPath>
+    </Reference>
+    <Reference Include="UnityEditor.WindowsStandalone.Extensions">
+      <HintPath>C:/Program Files/Unity/Hub/Editor/2018.3.6f1/Editor/Data/PlaybackEngines/windowsstandalonesupport/UnityEditor.WindowsStandalone.Extensions.dll</HintPath>
+    </Reference>
+    <Reference Include="SyntaxTree.VisualStudio.Unity.Bridge">
+      <HintPath>C:/Program Files (x86)/Microsoft Visual Studio Tools for Unity/15.0/Editor/SyntaxTree.VisualStudio.Unity.Bridge.dll</HintPath>
+    </Reference>
+    <Reference Include="SyntaxTree.Mono.Cecil">
+      <HintPath>Assets/UnityVS/Editor/SyntaxTree.Mono.Cecil.dll</HintPath>
+    </Reference>
+    <Reference Include="UnityEditor.Advertisements">
+      <HintPath>D:/Github/webrtc-uwp-sdk/common/windows/samples/PeerCCUnity/ClientUnity/Unity/PeerCCUnity/Library/PackageCache/com.unity.ads@2.0.8/Editor/UnityEditor.Advertisements.dll</HintPath>
     </Reference>
     <Reference Include="Unity.Analytics.Editor">
       <HintPath>D:/Github/webrtc-uwp-sdk/common/windows/samples/PeerCCUnity/ClientUnity/Unity/PeerCCUnity/Library/PackageCache/com.unity.analytics@3.2.2/Unity.Analytics.Editor.dll</HintPath>
@@ -253,6 +289,9 @@
     </Reference>
     <Reference Include="Unity.Analytics.Tracker">
       <HintPath>D:/Github/webrtc-uwp-sdk/common/windows/samples/PeerCCUnity/ClientUnity/Unity/PeerCCUnity/Library/PackageCache/com.unity.analytics@3.2.2/Unity.Analytics.Tracker.dll</HintPath>
+    </Reference>
+    <Reference Include="UnityEditor.Purchasing">
+      <HintPath>D:/Github/webrtc-uwp-sdk/common/windows/samples/PeerCCUnity/ClientUnity/Unity/PeerCCUnity/Library/PackageCache/com.unity.purchasing@2.0.3/Editor/UnityEditor.Purchasing.dll</HintPath>
     </Reference>
     <Reference Include="mscorlib">
       <HintPath>C:\Program Files\Unity\Hub\Editor\2018.3.6f1\Editor\Data\MonoBleedingEdge\lib\mono\4.7.1-api\mscorlib.dll</HintPath>
@@ -610,31 +649,52 @@
     </Reference>
   </ItemGroup>
   <ItemGroup>
-    <ProjectReference Include="Unity.TextMeshPro.Editor.csproj">
-      <Project>{3A848AB7-9891-EDDA-D555-BF184C2F81F4}</Project>
-      <Name>Unity.TextMeshPro.Editor</Name>
-    </ProjectReference>
-    <ProjectReference Include="Unity.PackageManagerUI.Editor.csproj">
-      <Project>{6877705C-FBD9-0C4F-5AFB-6FB431E5D39D}</Project>
-      <Name>Unity.PackageManagerUI.Editor</Name>
-    </ProjectReference>
-    <ProjectReference Include="Unity.CollabProxy.Editor.csproj">
-      <Project>{C12CEEC6-100C-58A2-DE36-314E4DE5E40B}</Project>
-      <Name>Unity.CollabProxy.Editor</Name>
-    </ProjectReference>
     <ProjectReference Include="Unity.TextMeshPro.csproj">
       <Project>{07A21C90-D344-AE1A-8456-9910C203B41A}</Project>
       <Name>Unity.TextMeshPro</Name>
     </ProjectReference>
-    <ProjectReference Include="Unity.Analytics.DataPrivacy.csproj">
-      <Project>{D6E266C6-3D1F-28C8-9FEB-2A01E44DBF77}</Project>
-      <Name>Unity.Analytics.DataPrivacy</Name>
-    </ProjectReference>
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="Assets\Scripts\ControlScript.cs" />
-    <Compile Include="Assets\Scripts\GazeGestureManager.cs" />
-    <Compile Include="Assets\Scripts\WorldCursor.cs" />
+    <Compile Include="Packages\com.unity.textmeshpro\Scripts\Editor\DropdownOptionListDrawer.cs" />
+    <Compile Include="Packages\com.unity.textmeshpro\Scripts\Editor\EditorCoroutine.cs" />
+    <Compile Include="Packages\com.unity.textmeshpro\Scripts\Editor\GlyphInfoDrawer.cs" />
+    <Compile Include="Packages\com.unity.textmeshpro\Scripts\Editor\KerningPairDrawer.cs" />
+    <Compile Include="Packages\com.unity.textmeshpro\Scripts\Editor\SpriteInfoDrawer.cs" />
+    <Compile Include="Packages\com.unity.textmeshpro\Scripts\Editor\TextAlignmentDrawer.cs" />
+    <Compile Include="Packages\com.unity.textmeshpro\Scripts\Editor\TMP_BaseEditorPanel.cs" />
+    <Compile Include="Packages\com.unity.textmeshpro\Scripts\Editor\TMP_BaseShaderGUI.cs" />
+    <Compile Include="Packages\com.unity.textmeshpro\Scripts\Editor\TMP_BitmapShaderGUI.cs" />
+    <Compile Include="Packages\com.unity.textmeshpro\Scripts\Editor\TMP_ColorGradientAssetMenu.cs" />
+    <Compile Include="Packages\com.unity.textmeshpro\Scripts\Editor\TMP_ColorGradientEditor.cs" />
+    <Compile Include="Packages\com.unity.textmeshpro\Scripts\Editor\TMP_DropdownEditor.cs" />
+    <Compile Include="Packages\com.unity.textmeshpro\Scripts\Editor\TMP_EditorPanel.cs" />
+    <Compile Include="Packages\com.unity.textmeshpro\Scripts\Editor\TMP_EditorUtility.cs" />
+    <Compile Include="Packages\com.unity.textmeshpro\Scripts\Editor\TMP_FontAssetEditor.cs" />
+    <Compile Include="Packages\com.unity.textmeshpro\Scripts\Editor\TMP_InputFieldEditor.cs" />
+    <Compile Include="Packages\com.unity.textmeshpro\Scripts\Editor\TMP_MeshRendererEditor.cs" />
+    <Compile Include="Packages\com.unity.textmeshpro\Scripts\Editor\TMP_PackageUtilities.cs" />
+    <Compile Include="Packages\com.unity.textmeshpro\Scripts\Editor\TMP_PostBuildProcessHandler.cs" />
+    <Compile Include="Packages\com.unity.textmeshpro\Scripts\Editor\TMP_ProjectTextSettings.cs" />
+    <Compile Include="Packages\com.unity.textmeshpro\Scripts\Editor\TMP_ResourcesLoader.cs" />
+    <Compile Include="Packages\com.unity.textmeshpro\Scripts\Editor\TMP_SDFShaderGUI.cs" />
+    <Compile Include="Packages\com.unity.textmeshpro\Scripts\Editor\TMP_SettingsEditor.cs" />
+    <Compile Include="Packages\com.unity.textmeshpro\Scripts\Editor\TMP_SpriteAssetEditor.cs" />
+    <Compile Include="Packages\com.unity.textmeshpro\Scripts\Editor\TMP_SpriteAssetImporter.cs" />
+    <Compile Include="Packages\com.unity.textmeshpro\Scripts\Editor\TMP_SpriteAssetMenu.cs" />
+    <Compile Include="Packages\com.unity.textmeshpro\Scripts\Editor\TMP_StyleAssetMenu.cs" />
+    <Compile Include="Packages\com.unity.textmeshpro\Scripts\Editor\TMP_StyleSheetEditor.cs" />
+    <Compile Include="Packages\com.unity.textmeshpro\Scripts\Editor\TMP_SubMesh_Editor.cs" />
+    <Compile Include="Packages\com.unity.textmeshpro\Scripts\Editor\TMP_SubMeshUI_Editor.cs" />
+    <Compile Include="Packages\com.unity.textmeshpro\Scripts\Editor\TMP_UiEditorPanel.cs" />
+    <Compile Include="Packages\com.unity.textmeshpro\Scripts\Editor\TMP_UIStyleManager.cs" />
+    <Compile Include="Packages\com.unity.textmeshpro\Scripts\Editor\TMPro_ContextMenus.cs" />
+    <Compile Include="Packages\com.unity.textmeshpro\Scripts\Editor\TMPro_CreateObjectMenu.cs" />
+    <Compile Include="Packages\com.unity.textmeshpro\Scripts\Editor\TMPro_EditorShaderUtilities.cs" />
+    <Compile Include="Packages\com.unity.textmeshpro\Scripts\Editor\TMPro_FontAssetCreatorWindow.cs" />
+    <Compile Include="Packages\com.unity.textmeshpro\Scripts\Editor\TMPro_FontPlugin.cs" />
+    <Compile Include="Packages\com.unity.textmeshpro\Scripts\Editor\TMPro_SortingLayerHelper.cs" />
+    <Compile Include="Packages\com.unity.textmeshpro\Scripts\Editor\TMPro_TextContainerEditor.cs" />
+    <Compile Include="Packages\com.unity.textmeshpro\Scripts\Editor\TMPro_TexturePostProcessor.cs" />
   </ItemGroup>
   <ItemGroup>
     <None Include="Assets\Materials\EyeEffectShader.shader" />

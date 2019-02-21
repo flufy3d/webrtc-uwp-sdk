@@ -496,6 +496,7 @@ public class ControlScript : MonoBehaviour
 
     private void OnEnable()
     {
+#if !UNITY_EDITOR
         {
             Plugin.CreateLocalMediaPlayback();
             IntPtr nativeTex = IntPtr.Zero;
@@ -511,14 +512,17 @@ public class ControlScript : MonoBehaviour
             var primaryPlaybackTexture = Texture2D.CreateExternalTexture((int)RemoteTextureWidth, (int)RemoteTextureHeight, TextureFormat.BGRA32, false, false, nativeTex);
             RemoteVideoImage.texture = primaryPlaybackTexture;
         }
+#endif
     }
 
     private void OnDisable()
     {
+#if !UNITY_EDITOR
         LocalVideoImage.texture = null;
         Plugin.ReleaseLocalMediaPlayback();
         RemoteVideoImage.texture = null;
         Plugin.ReleaseRemoteMediaPlayback();
+#endif
     }
 
     private void Update()
